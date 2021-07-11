@@ -72,3 +72,7 @@ function onCardClick(e) {
     }
   }
 }
+
+function reset() {
+  console.log(cards);
+}
