@@ -1,6 +1,9 @@
 let clickedCard = null;
 let preventClick = false;
 let matches = 0;
+var timer;
+var timeLeft = 60;
+let timerStart = false;
 
 const colors = [
   "red",
@@ -30,6 +33,12 @@ for (let color of colors) {
 }
 
 function onCardClick(e) {
+  if (!timerStart) {
+    timer = setInterval(updateTimer, 1000);
+    updateTimer();
+
+    timerStart = true;
+  }
   const target = e.currentTarget;
 
   target.className = target.className.replace("color-hidden", "").trim();
@@ -75,4 +84,22 @@ function onCardClick(e) {
 
 function reset() {
   console.log(cards);
+}
+
+//after the timer runs out
+function gameOver() {
+  clearInterval(timer);
+  setTimeout(() => {
+    alert("Time Out!!!!");
+  }, 1000);
+}
+
+function updateTimer() {
+  timeLeft = timeLeft - 1;
+  if (timeLeft >= 0) {
+    console.log(timeLeft);
+    document.getElementById("timer").innerHTML = `${timeLeft}`;
+  } else {
+    gameOver();
+  }
 }

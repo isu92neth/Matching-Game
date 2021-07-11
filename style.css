@@ -177,6 +177,13 @@ body {
   box-sizing: border-box;
 }
 
+.time {
+  padding-top: 5%;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+}
+
 .red {
   background-color: red;
 }
